@@ -15,7 +15,7 @@ RIGHT JOIN bookings b ON u.id = b.user_id;
 SELECT u.*, b.*
 FROM users u
 LEFT JOIN bookings b ON u.id = b.user_id
-UNION
+FULL OUTER JOIN
 SELECT u.*, b.*
 FROM users u
 RIGHT JOIN bookings b ON u.id = b.user_id;
