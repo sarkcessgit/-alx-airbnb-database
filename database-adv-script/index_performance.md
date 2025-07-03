@@ -1,2 +1,5 @@
-CREATE INDEX idx_bookings_user_id ON bookings(user_id);
-CREATE INDEX idx_bookings_created_at ON bookings(created_at);
+
+| File                   | Contents                                                                 |
+|------------------------|--------------------------------------------------------------------------|
+| `database_index.sql`   | All `CREATE INDEX` commands                                              |
+| `index_performance.md` | EXPLAIN/ANALYZE results and notes on improvements                        |
