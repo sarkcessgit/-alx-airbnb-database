@@ -1,4 +1,5 @@
-database_index.sql
+alx-airbnb-database/database-adv-script/database_index.sql
+
 -- Index to speed up user_id lookups in bookings
 CREATE INDEX idx_bookings_user_id ON bookings(user_id);
 
