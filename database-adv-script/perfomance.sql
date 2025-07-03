@@ -11,7 +11,9 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON b.id = pay.booking_id;
+JOIN payments pay ON b.id = pay.booking_id
+WHERE b.created_at >= '2023-01-01'
+  AND pay.amount > 100;
 
 -- 🔍 Analyze performance of the initial query
 EXPLAIN ANALYZE
@@ -27,9 +29,11 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON b.id = pay.booking_id;
+JOIN payments pay ON b.id = pay.booking_id
+WHERE b.created_at >= '2023-01-01'
+  AND pay.amount > 100;
 
--- ✅ Refactored query: uses SELECT with fewer columns and assumes indexing exists
+-- ✅ Refactored query: selects only required columns and assumes indexing
 EXPLAIN ANALYZE
 SELECT 
     b.id,
@@ -40,4 +44,6 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON b.id = pay.booking_id;
+JOIN payments pay ON b.id = pay.booking_id
+WHERE b.created_at >= '2023-01-01'
+  AND pay.amount > 100;
